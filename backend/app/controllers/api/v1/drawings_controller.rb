@@ -19,6 +19,6 @@ class Api::V1::DrawingsController < ApplicationController
   end
 
   def drawing_params
-    params.permit(:title, :image, :description)
+    params.permit(:title, :image, :description, :artist)
   end
 end
