@@ -23,7 +23,12 @@ class App extends Component {
     return (
       <div className="App">
         <DrawingPage />
-        <DrawingCard drawings={this.state.drawings}/>
+        
+        {
+          this.state.drawings.map(drawing => 
+            <DrawingCard key={drawing.id} drawing={drawing}/>
+          )
+        }
       </div>
     );
   }
