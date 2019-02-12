@@ -6,16 +6,19 @@ import "../DrawingPage.css";
 class DrawingPage extends Component {
   state={
     displayColor: false,
-    color:'#ff8a65',
+    color:'#000000',
     tools: Tools.Pencil,
     title: "",
     description: "",
-    artist: ""
+    artist: "",
+    canvas: "",
+    categories: []
+      
   }
 
   colorChange = (color) =>{
     this.setState({
-      color: color.hex,
+      color: color.hex
     })
   }
 
@@ -27,18 +30,41 @@ class DrawingPage extends Component {
 
   createHandler = (event) => {
     event.preventDefault()
-    console.log(event.target);
-    console.log(this.canvas.toDataURL());
+    fetch('http://localhost:3000/api/v1/drawings', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: this.state.title,
+        image: this.state.canvas, 
+        description: this.state.description,
+        artist: this.state.artist,
+        categories: this.state.categories
+      })
+    })
+
+    this.setState({
+      title: "",
+      description: "",
+      artist: ""
+    })
+
+    this.canvas.clear()
+
   }
 
   changeHandler = (event) =>{
-    console.log(event.target.value);
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
+      canvas: this.canvas.toDataURL().toString()
     })
   }
 
-  render() {  
+  render() { 
+    console.log(this.state.canvas);
+     
     return (
       <div>
         <div className="sketch-field">
