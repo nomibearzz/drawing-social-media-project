@@ -20,9 +20,21 @@ class App extends Component {
     })
   }
 
-  submitHandler = (event) => {
-    event.preventDefault()
-    console.log('click app');
+  submitHandler = (event, drawingData) => {
+    event.preventDefault()  
+    fetch('http://localhost:3000/api/v1/drawings', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        title: drawingData.title,
+        image: drawingData.canvas,
+        description: drawingData.description,
+        artist: drawingData.artist,
+      })
+    })
     
   }
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { SketchField, Tools } from 'react-sketch';
 import { SketchPicker } from 'react-color';
-import DrawingCard from "../components/DrawingCard.js";
 import "../DrawingPage.css";
 
 class DrawingPage extends Component {
@@ -29,37 +28,6 @@ class DrawingPage extends Component {
     })
   }
 
-  createHandler = (event) => {
-    event.preventDefault()
-    fetch('http://localhost:3000/api/v1/drawings', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title: this.state.title,
-        image: this.state.canvas, 
-        description: this.state.description,
-        artist: this.state.artist,
-        categories: this.state.categories
-      })
-    })
-    // .then(response=>response.json())
-    // .then(data=> {
-
-    // })
-
-    this.setState({
-      title: "",
-      description: "",
-      artist: ""
-    })
-
-    this.canvas.clear()
-
-  }
-
   changeHandler = (event) =>{
     this.setState({
       [event.target.name]: event.target.value,
@@ -69,10 +37,13 @@ class DrawingPage extends Component {
 
   submitHandler = (event) => {
     event.preventDefault()
-    console.log(this.state);
-    
-    console.log('something happened');
-    
+    this.props.onSubmit(event, this.state)
+    this.setState({
+      title: "",
+      description: "",
+      artist: ""
+    })
+    this.canvas.clear()
   }
 
   render() { 
