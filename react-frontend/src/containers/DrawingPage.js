@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { SketchField, Tools } from 'react-sketch';
 import { SketchPicker } from 'react-color';
+import DrawingCard from "../components/DrawingCard.js";
 import "../DrawingPage.css";
 
 class DrawingPage extends Component {
@@ -44,6 +45,10 @@ class DrawingPage extends Component {
         categories: this.state.categories
       })
     })
+    // .then(response=>response.json())
+    // .then(data=> {
+
+    // })
 
     this.setState({
       title: "",
@@ -63,8 +68,7 @@ class DrawingPage extends Component {
   }
 
   render() { 
-    console.log(this.state.canvas);
-     
+    // console.log(this.state.canvas);
     return (
       <div>
         <div className="sketch-field">

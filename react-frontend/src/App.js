@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Route, Switch, Redirect } from "react-router-dom";
 import './App.css';
 import DrawingPage from './containers/DrawingPage.js';
 import DrawingCard from "./components/DrawingCard";
+import Nav from "./components/Nav.js";
 
 class App extends Component {
   state={
@@ -18,17 +20,19 @@ class App extends Component {
     })
   }
   render() {
-    console.log(this.state.drawings);
+    let drawings = this.state.drawings.map(drawing => 
+      <DrawingCard key={drawing.id} drawing={drawing}/>
+    )
     
     return (
       <div className="App">
-        <DrawingPage />
+        <Nav />
+  
+        <Switch>
+          <Route exact path="/" render={() => drawings } />   
+          <Route path="/drawingpage" component={DrawingPage}/>
+        </Switch>
         
-        {
-          this.state.drawings.map(drawing => 
-            <DrawingCard key={drawing.id} drawing={drawing}/>
-          )
-        }
       </div>
     );
   }
