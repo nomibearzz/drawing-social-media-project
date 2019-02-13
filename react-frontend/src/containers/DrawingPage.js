@@ -67,6 +67,14 @@ class DrawingPage extends Component {
     })
   }
 
+  submitHandler = (event) => {
+    event.preventDefault()
+    console.log(this.state);
+    
+    console.log('something happened');
+    
+  }
+
   render() { 
     // console.log(this.state.canvas);
     return (
@@ -82,7 +90,7 @@ class DrawingPage extends Component {
             lineColor={this.state.color} />
         </div>
 
-        <form className="create-info">
+        <form className="create-info" onSubmit={this.submitHandler}>
           Title 
           <input 
             type="text" 
@@ -103,7 +111,7 @@ class DrawingPage extends Component {
             value={this.state.artist}
             onChange={(event)=>this.changeHandler(event)}
             placeholder="Your Name"/><br/>
-          <button onClick={(event)=>this.createHandler(event)}>Create!</button>
+          <button>Create!</button>
         </form>
         
 

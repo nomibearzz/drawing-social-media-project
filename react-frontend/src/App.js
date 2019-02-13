@@ -19,18 +19,26 @@ class App extends Component {
       })
     })
   }
+
+  submitHandler = (event) => {
+    event.preventDefault()
+    console.log('click app');
+    
+  }
+
   render() {
     let drawings = this.state.drawings.map(drawing => 
       <DrawingCard key={drawing.id} drawing={drawing}/>
     )
+    let drawPage = <DrawingPage onSubmit={this.submitHandler}/>
     
     return (
       <div className="App">
         <Nav />
   
         <Switch>
-          <Route exact path="/" render={() => drawings } />   
-          <Route path="/drawingpage" component={DrawingPage}/>
+          <Route exact path="/" render={()=> drawings } />   
+          <Route path="/drawingpage" render={()=> drawPage}/>
         </Switch>
         
       </div>
