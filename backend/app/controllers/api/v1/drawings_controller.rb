@@ -11,6 +11,11 @@ class Api::V1::DrawingsController < ApplicationController
 
   def create
     @drawing = Drawing.create(drawing_params)
+    if @drawing.save
+      render json: @drawing
+    else
+      render json: {errors: @drawing.errors.full_messages}
+    end
   end
 
   private
