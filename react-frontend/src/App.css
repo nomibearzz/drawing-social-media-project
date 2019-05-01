@@ -18,7 +18,24 @@ a:nth-child(2) {
 }
  
 img {
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
   width: 400px;
   height: auto;
 }
 
+.drawing {
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .1);
+  padding-left: 15px;
+  padding-bottom: 5px;
+  padding-top: 20px;
+  padding-right: 10px;
+  margin-left: .15in;
+  margin-right: .12in;
+  margin-bottom: .34in;
+}
+
+.drawing:hover {
+  box-shadow: 0 1px 3px 3px rgba(0, 0, 0, .15);
+}
