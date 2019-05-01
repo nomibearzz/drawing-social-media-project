@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const DrawingInfo = (props) => {
-  const {drawing, onClick, deleteOnClick} = props
+class DrawingInfo extends Component {
+  state={
+    editform: false,
+  }
 
-  return (
-    <div className="info-outer">
+  editHandler = () => {
+    console.log('clicky!');
+    this.setState({
+      editform: !this.state.editform
+    })
+    
+  }
+
+  render() {
+    const {drawing, onClick, deleteOnClick, editOnSubmit} = this.props
+    console.log(this.state.editform);
+    
+    return (
+      <div className="info-outer">
 
       <div className="info-card">
 
         <div id="buttons">
-          <button><button/>
+
+          <button name="edit-button"
+            id="edit"
+            onClick={this.editHandler}></button>
 
           <button name="delete-button"
             id="trash"
@@ -36,8 +53,8 @@ const DrawingInfo = (props) => {
       
       </div>
     </div>
-    
-  );
-};
+    );
+  }
+}
 
 export default DrawingInfo;

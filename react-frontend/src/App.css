@@ -44,20 +44,30 @@ img {
 #buttons{
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
+}
+
+#edit{
+  background-image: url(https://image.flaticon.com/icons/png/512/46/46395.png);
+  background-size: 100%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border: none;
+  margin-right: 4px;
 }
 
 #trash{
-  margin-left: 89%;
   background-image: url(https://ya-webdesign.com/images/edit-delete-icon-png.png);
   background-size: 100%;
   width: 25px;
   height: 25px;
   cursor: pointer;
   border: none; 
+  margin-right: 4px;
 }
 
 #close{
-  margin-left: auto;
   background-image: url(https://cdn3.iconfinder.com/data/icons/status/100/close_1-512.png);
   background-size: 100%;
   width: 25px;

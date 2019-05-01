@@ -49,6 +49,13 @@ class App extends Component {
     })
   }
 
+  editSubmitHandler = (event, drawing) => {
+    event.preventDefault();
+    console.log(event);
+    console.log("this be the part where ye edit mate!");
+    
+  }
+
   submitHandler = (event, drawing) => {
     event.preventDefault();
     console.log(event);
@@ -93,7 +100,8 @@ class App extends Component {
         <DrawingInfo 
         drawing={this.state.clickedDrawing} 
         onClick={this.closeHandler}
-        deleteOnClick={this.deleteHandler} /> 
+        deleteOnClick={this.deleteHandler}
+        editOnSubmit={this.editSubmitHandler} /> 
         : null}
 
         <Switch>
