@@ -31,25 +31,8 @@ class DrawingPage extends Component {
 
   createHandler = (event) => {
     event.preventDefault()
-    fetch('http://localhost:3000/api/v1/drawings', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        title: this.state.title,
-        image: this.state.canvas, 
-        description: this.state.description,
-        artist: this.state.artist,
-        categories: this.state.categories
-      })
-    })
-    .then(response=>response.json())
-    .then(data=> {
-        console.log(data);
-    }).catch(error => console.log(error) )
-
+    this.props.onSubmit(event, this.state);
+    
     this.setState({
       title: "",
       description: "",
@@ -68,7 +51,7 @@ class DrawingPage extends Component {
   }
 
   render() { 
-    // console.log(this.state.canvas);
+   
     return (
       <div>
         <div className="sketch-field">
