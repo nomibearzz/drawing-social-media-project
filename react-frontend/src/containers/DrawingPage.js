@@ -48,8 +48,7 @@ class DrawingPage extends Component {
     .then(response=>response.json())
     .then(data=> {
         console.log(data);
-        
-    })
+    }).catch(error => console.log(error) )
 
     this.setState({
       title: "",

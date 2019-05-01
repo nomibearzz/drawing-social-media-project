@@ -38,11 +38,15 @@ class App extends Component {
   }
 
   deleteHandler = (drawing) => {
-    console.log("i'm deleting this");
     fetch(`http://localhost:3000/api/v1/drawings/${drawing.id}`,{
       method: 'DELETE'
     }).then(response => response.json())
-
+    .then(data =>{
+      this.setState({
+        drawings: data,
+        showInfo: !this.state.showInfo
+      })
+    })
   }
 
   render() {

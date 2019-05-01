@@ -2,7 +2,6 @@ import React from 'react';
 
 const DrawingInfo = (props) => {
   const {drawing, onClick, deleteOnClick} = props
-  console.log(drawing);
   
   return (
     <div className="info-outer">
