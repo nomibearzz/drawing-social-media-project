@@ -14,6 +14,11 @@ class Api::V1::DrawingsController < ApplicationController
     render json: @drawing
   end
 
+  def update
+    @drawing.update(drawing_params)
+    render json: @drawing
+  end
+
   def destroy
     @drawings = Drawing.all
     @drawing.destroy
