@@ -45,10 +45,11 @@ class DrawingPage extends Component {
         categories: this.state.categories
       })
     })
-    // .then(response=>response.json())
-    // .then(data=> {
-
-    // })
+    .then(response=>response.json())
+    .then(data=> {
+        console.log(data);
+        
+    })
 
     this.setState({
       title: "",
