@@ -2,9 +2,9 @@ import React from 'react';
 import DrawingInfo from "./DrawingInfo";
 
 const DrawingCard = (props) => {
-  const {drawing} =props
+  const {drawing, onClick} =props
   return (
-    <div className="drawing">
+    <div className="drawing" onClick={()=> onClick({drawing})}>
       <img src={drawing.image} alt=""/>
       <h4>{drawing.title}</h4>
       <i>by {drawing.artist}</i>
