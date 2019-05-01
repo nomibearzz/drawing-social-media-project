@@ -11,6 +11,13 @@ class Api::V1::DrawingsController < ApplicationController
 
   def create
     @drawing = Drawing.create(drawing_params)
+    redner json: @drawing
+  end
+
+  def destroy
+    @drawings = Drawing.all
+    @drawing.destroy
+    render json: @drawings
   end
 
   private
