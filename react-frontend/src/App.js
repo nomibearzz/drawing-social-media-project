@@ -37,6 +37,14 @@ class App extends Component {
     })
   }
 
+  deleteHandler = (drawing) => {
+    console.log("i'm deleting this");
+    fetch(`http://localhost:3000/api/v1/drawings/${drawing.id}`,{
+      method: 'DELETE'
+    }).then(response => response.json())
+
+  }
+
   render() {
     
     let drawings = this.state.drawings.map(drawing => 
@@ -47,7 +55,12 @@ class App extends Component {
       <div className="App">
         <Nav />
   
-        {this.state.showInfo ? <DrawingInfo drawing={this.state.clickedDrawing} onClick={this.closeHandler} /> : null}
+        {this.state.showInfo ? 
+        <DrawingInfo 
+        drawing={this.state.clickedDrawing} 
+        onClick={this.closeHandler}
+        deleteOnClick={this.deleteHandler} /> 
+        : null}
 
         <Switch>
           <Route exact path="/" render={() => drawings } />   

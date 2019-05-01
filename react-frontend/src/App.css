@@ -40,12 +40,29 @@ img {
   box-shadow: 0 1px 3px 3px rgba(0, 0, 0, .15);
 }
 
+#buttons{
+  display: flex;
+  flex-direction: row;
+}
+
+#trash{
+  margin-left: 89%;
+  background-image: url(https://ya-webdesign.com/images/edit-delete-icon-png.png);
+  background-size: 100%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border: none; 
+}
+
 #close{
-  margin-left: 95%;
+  margin-left: auto;
   background-image: url(https://cdn3.iconfinder.com/data/icons/status/100/close_1-512.png);
   background-size: 100%;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border: none;
 }
 
 .info-outer{
