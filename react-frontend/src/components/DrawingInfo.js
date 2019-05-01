@@ -9,6 +9,8 @@ const DrawingInfo = (props) => {
       <div className="info-card">
 
         <div id="buttons">
+          <button><button/>
+
           <button name="delete-button"
             id="trash"
             onClick={()=>deleteOnClick(drawing)}></button>
