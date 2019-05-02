@@ -38,15 +38,18 @@ class App extends Component {
   }
 
   deleteHandler = (drawing) => {
+    console.log(drawing);
+    
     fetch(`http://localhost:3000/api/v1/drawings/${drawing.id}`,{
       method: 'DELETE'
     }).then(response => response.json())
-    .then(data =>{
+    .then(data => 
       this.setState({
-        drawings: data,
+        drawings: data, 
         showInfo: !this.state.showInfo
       })
-    })
+    )
+
   }
 
   editSubmitHandler = (event, drawing) => {
@@ -85,6 +88,8 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.drawings);
+    
 
     let drawings = this.state.drawings.map(drawing => 
       <DrawingContainer className="container" key={drawing.id} drawing={drawing} onClick={this.clickHandler} />
