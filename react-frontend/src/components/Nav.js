@@ -5,21 +5,14 @@ const Nav = () => {
   return (
     <div className="nav-bar">
 
-      <input type="checkbox"/>
-
-      <span></span>
-      <span></span>
-      <span></span>
-
-      <ul className="menu">
         <Link to="/drawingpage" style={{ textDecoration: 'none'}}>
-          <li>Doodle!</li>
+          Doodle!
         </Link>
 
         <Link to="/" style={{ textDecoration: 'none'}}>
-          <li>View All Drawings</li>
+          View All Drawings
         </Link>
-      </ul>
+    
       
     </div>
   );

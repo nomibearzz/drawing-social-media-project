@@ -1,109 +1,17 @@
 .nav-bar {
   display: flex;
   grid-column: span 3; 
-  display: block;
-  position: relative;
-  top: 50px;
-  left: 50px;
-  z-index: 1;
-  
-  /* -webkit-user-select: none;
-  user-select: none; */
-}
-
-.nav-bar input{
-  display: block;
-  width: 40px;
-  height: auto;
-  position: absolute;
-  top: -7px;
-  left: -5px;
-
-  cursor: pointer;
-
-  opacity: 0;
-  z-index: 2;
-
-  /* -webkit-touch-callout: none; */
-}
-
-.nav-bar span{
-  display: block;
-  width: 33px;
-  height: 4px;
-  margin-bottom: 5px;
-  position: relative;
-
-  background: #232323;
-  border-radius: 3px;
-
-  z-index: 1;
-
-  transform-origin: 4px 0px;
-
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-  background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
-  opacity 0.55s ease;
-}
-
-.nav-bar span:first-child{
-  transform-origin: 0% 0%;
-}
-
-.nav-bar :nth-last-child(2){
-  transform-origin: 0% 100%;
-}
-
-.nav-bar input:checked~span {
-  opacity: 1;
-  transform: rotate(45deg) translate(-2px, -1px);
-  background: #cdcdcd;
-}
-
-.nav-bar input:checked~span:nth-last-child(3) {
-  opacity: 0;
-  transform: rotate(0deg) scale(0.2, 0.2);
-}
-
-.nav-bar input:checked~span:nth-last-child(2) {
-  transform: rotate(-45deg) translate(0, -1px);
-}
-
-.menu {
-  position: absolute;
-  width: 300px;
-  height: 550px;
-  margin: -100px 0 0 -50px;
-  padding: 50px;
-  padding-top: 125px;
-
-  background: #232323;
-  list-style-type: none;
-  -webkit-font-smoothing: antialiased;
-
-  transform-origin: 0% 0%;
-  transform: translate(-100%, 0);
-
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
-}
-
-.menu li {
-  padding: 10px 0;
-  font-size: 22px;
-}
-
-.nav-bar input:checked~ul {
-  transform: none;
+  justify-content: flex-end;
 }
 
 a:nth-child(1) {
   margin-right: 6px;
-  color: #cdcdcd;
+  color: #232323;
 }
 
 a:nth-child(2) {
   margin-right: 6px;
-  color: #cdcdcd;
+  color: #232323;
 }
 
 a:hover{
@@ -113,7 +21,7 @@ a:hover{
 .App {
   display: grid;
   grid-template-columns: repeat(3, 4fr);
-  grid-template-rows: 100px auto;
+  grid-template-rows: 60px auto;
 }
 
 img {
@@ -181,7 +89,6 @@ img {
   width: 100%;
   height: 100%;
   margin: auto;
-  z-index: 5;
   background-color: rgba(0, 0, 0, .2);
 }
 
@@ -193,7 +100,6 @@ img {
   border-radius: 5px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
   background-color: #ffffff;
-  z-index: 5;
   position: absolute;
   margin: auto;
   top: 0;
