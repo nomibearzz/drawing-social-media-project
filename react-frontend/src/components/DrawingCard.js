@@ -1,5 +1,4 @@
 import React from 'react';
-import DrawingInfo from "./DrawingInfo";
 
 const DrawingCard = (props) => {
   const {drawing, onClick} =props

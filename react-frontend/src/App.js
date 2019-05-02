@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect, withRouter } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import './App.css';
 import DrawingPage from './containers/DrawingPage.js';
 import DrawingContainer from "./containers/DrawingContainer";

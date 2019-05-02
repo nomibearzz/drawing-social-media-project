@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { SketchField, Tools } from 'react-sketch';
 import { SketchPicker } from 'react-color';
-import DrawingCard from "../components/DrawingCard.js";
 import "../DrawingPage.css";
 
 class DrawingPage extends Component {
@@ -107,6 +106,13 @@ class DrawingPage extends Component {
             lineColor={this.state.color} />
         </div>
 
+        <div className="color-picker">
+          <SketchPicker 
+            disableAlpha={true}
+            color={this.state.color}
+            onChange={this.colorChange}/>
+        </div>
+
         <form className="create-info">
           <p>Title</p> 
           <input 
@@ -141,19 +147,9 @@ class DrawingPage extends Component {
               </p>
             ) 
           }
-
-
           <button onClick={(event)=>this.createHandler(event)}>Create!</button>
         </form>
       
-          
-
-        <div className="color-picker">
-          <SketchPicker 
-            disableAlpha={true}
-            color={this.state.color}
-            onChange={this.colorChange}/>
-        </div>
         
       </div>
     );

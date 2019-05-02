@@ -20,7 +20,7 @@
 }
 
 .drawing-page {
-  display: grid;
-  grid-template-rows: 60px auto;
-  grid-template-columns: repeat(3, 4fr);
+  display: flex;
+  flex-direction: row;
 }
+
