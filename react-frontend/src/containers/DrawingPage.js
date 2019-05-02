@@ -46,7 +46,8 @@ class DrawingPage extends Component {
     this.setState({
       title: "",
       description: "",
-      artist: ""
+      artist: "",
+      pickedCategories: []
     })
 
     this.canvas.clear()
@@ -76,6 +77,8 @@ class DrawingPage extends Component {
 
   render() { 
     console.log(this.state.pickedCategories);
+    console.log(this.state);
+    
 
     return (
       <div className="drawing-page">
