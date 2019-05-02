@@ -60,8 +60,22 @@ class DrawingPage extends Component {
     })
   }
 
+  checkboxHandler = (event) => {
+    const selectedCategory = event.target.value;
+    let selectedArray;
+
+    if(this.state.pickedCategories.indexOf(selectedCategory) > - 1){
+      selectedArray = this.state.pickedCategories.filter(category => category !== selectedCategory)
+    } else {
+      selectedArray = [...this.state.pickedCategories, selectedCategory]
+    }
+    this.setState({
+      pickedCategories: selectedArray
+    })
+  }
+
   render() { 
-    console.log(this.state.categories);
+    console.log(this.state.pickedCategories);
 
     return (
       <div className="drawing-page">
@@ -141,7 +155,8 @@ class DrawingPage extends Component {
                 <input className="category-boxes"
                 type="checkbox"
                 name="pickedCategories"
-                onChange={"onChange function"}
+                onChange={(event)=> this.checkboxHandler(event)}
+                checked={this.state.pickedCategories.indexOf(category.name) > -1 }
                 value={category.name}
                 /> {category.name} 
               </p>
