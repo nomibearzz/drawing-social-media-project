@@ -11,6 +11,7 @@ class App extends Component {
     drawings: [],
     showInfo: false,
     clickedDrawing: [],
+    createdDrawing: 0
   }
 
   componentDidMount(){
@@ -61,8 +62,6 @@ class App extends Component {
 
   submitHandler = (event, drawing) => {
     event.preventDefault();
-    console.log(event);
-    console.log(drawing);
 
     fetch('http://localhost:3000/api/v1/drawings', {
       method: 'POST',
@@ -84,18 +83,36 @@ class App extends Component {
         this.setState({
           drawings
         })
+
+        drawing.pickedCategories.map(category => {
+          fetch('http://localhost:3000/api/v1/types', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              drawing_id: data.id,
+              category_id: category.id
+            })
+          }).then(response => response.json())
+          .then(data => {
+            console.log(data);
+            
+          })
+        })
+
     }).catch(error => console.log(error) )
+    
   }
 
   render() {
-    console.log(this.state.drawings);
     
-
     let drawings = this.state.drawings.map(drawing => 
       <DrawingContainer className="container" key={drawing.id} drawing={drawing} onClick={this.clickHandler} />
     )
 
-    let drawPage = <DrawingPage onSubmit={this.submitHandler}/>
+    let drawPage = <DrawingPage onSubmit={this.submitHandler} />
 
     return (
       <div className="App">

@@ -42,7 +42,7 @@ class DrawingPage extends Component {
   createHandler = (event) => {
     event.preventDefault()
     this.props.onSubmit(event, this.state);
-    
+
     this.setState({
       title: "",
       description: "",
