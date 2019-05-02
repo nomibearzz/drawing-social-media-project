@@ -72,7 +72,7 @@ class App extends Component {
         image: drawing.canvas, 
         description: drawing.description,
         artist: drawing.artist,
-        categories: drawing.categories
+        categories: drawing.pickedCategories
       })
     })
     .then(response=>response.json())

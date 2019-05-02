@@ -18,3 +18,9 @@
   width: 45px;
   height: 45px;
 }
+
+.drawing-page {
+  display: grid;
+  grid-template-rows: 60px auto;
+  grid-template-columns: repeat(3, 4fr);
+}
