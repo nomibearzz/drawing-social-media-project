@@ -9,7 +9,7 @@ class DrawingInfo extends Component {
     description: this.props.drawing.description
   }
 
-  editHandler = () => {
+  editToggleHandler = () => {
     console.log('clicky!');
     this.setState({
       editform: !this.state.editform
@@ -18,6 +18,9 @@ class DrawingInfo extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
+    console.log(event);
+    console.log('yeah! edits ftw!');
+    this.props.editOnSubmit(event, this.state)
 
   }
 
@@ -41,9 +44,17 @@ class DrawingInfo extends Component {
 
         <div id="buttons">
 
+          {
+            this.state.editform ? 
+            <button name="save-button" 
+              id="saves" 
+              onClick={(event) => this.submitHandler(event)}></button> 
+            : null
+          }
+
           <button name="edit-button"
             id="edit"
-            onClick={this.editHandler}></button>
+            onClick={this.editToggleHandler}></button>
 
           <button name="delete-button"
             id="trash"
@@ -52,6 +63,7 @@ class DrawingInfo extends Component {
           <button name="exit-button" 
             id="close" 
             onClick={()=>onClick()} ></button>
+
         </div>
       
         {
@@ -69,8 +81,7 @@ class DrawingInfo extends Component {
             <textarea name="description" value={this.state.description} onChange={(event) =>this.changeHandler(event)}/>
 
             <p>Categories</p> 
-            
-
+        
           </form>
           :
           <div>

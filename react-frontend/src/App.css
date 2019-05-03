@@ -55,6 +55,16 @@ img {
   z-index: 3;
 }
 
+#saves{
+  background-image: url(https://cdn2.iconfinder.com/data/icons/web-application-icons-part-2/100/Artboard_73-512.png);
+  background-size: 100%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  border: none;
+  margin-right: 6px;
+}
+
 #edit{
   background-image: url(https://image.flaticon.com/icons/png/512/46/46395.png);
   background-size: 100%;
