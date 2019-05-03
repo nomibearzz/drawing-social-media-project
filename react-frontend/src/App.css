@@ -113,7 +113,7 @@ img {
   overflow: auto;
 }
 
-.info-card p:nth-child(even){
+.info-card p:nth-child(odd){
   width: 179px;
   height: 22px;
   font-size: 15px;
@@ -124,7 +124,7 @@ img {
   letter-spacing: 0.4px;
 }
 
-.info-card p:nth-child(odd){
+.info-card p:nth-child(even){
   width: 420px;
   height: 22px;
   font-size: 17px;

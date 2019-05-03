@@ -79,10 +79,7 @@ class DrawingPage extends Component {
   }
 
   render() { 
-    console.log(this.state.pickedCategories);
-    console.log(this.state);
     
-
     return (
       <div className="drawing-page">
         <div className="drawing-tools">

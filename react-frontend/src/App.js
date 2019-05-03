@@ -64,6 +64,8 @@ class App extends Component {
   editSubmitHandler = (event, drawing) => {
     event.preventDefault();
     console.log(event);
+    console.log(drawing);
+    
     console.log("this be the part where ye edit mate!");
     
   }
@@ -81,15 +83,14 @@ class App extends Component {
         title: drawing.title,
         image: drawing.canvas, 
         description: drawing.description,
-        artist: drawing.artist,
-        categories: drawing.pickedCategories
+        artist: drawing.artist
       })
     })
     .then(response=>response.json())
     .then(data=> {
-        let drawings = [...this.state.drawings, data]
+        let newDrawings = [...this.state.drawings, data]
         this.setState({
-          drawings
+          drawings: newDrawings
         })
 
         drawing.pickedCategories.map(category => {
@@ -105,9 +106,9 @@ class App extends Component {
             })
           }).then(response => response.json())
           .then(data => {
-            let types = [...this.state.types, data]
+            let newTypes = [...this.state.types, data]
             this.setState({
-              types
+              types: newTypes
             })            
             
           })
