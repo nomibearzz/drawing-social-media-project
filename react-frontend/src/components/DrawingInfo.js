@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class DrawingInfo extends Component {
   state={
     editform: false,
+    drawTypes: []
   }
 
   editHandler = () => {
@@ -14,8 +15,12 @@ class DrawingInfo extends Component {
   }
 
   render() {
-    const {drawing, onClick, deleteOnClick, editOnSubmit} = this.props
+    const {drawing, onClick, deleteOnClick, editOnSubmit, types} = this.props
+    console.log('log', types);
+    console.log('log', drawing);
+    
     console.log(this.state.editform);
+
     
     return (
       <div className="info-outer">
@@ -47,7 +52,11 @@ class DrawingInfo extends Component {
         <p>Categories</p>
         <p>
           {
-            drawing.categories.map(category => `${category.name} `)
+            types.map(type => {
+              if (type.drawing_id === drawing.id){
+                return `${type.category.name} `
+              }
+            })
           }
         </p>
       

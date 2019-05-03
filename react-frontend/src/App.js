@@ -11,7 +11,7 @@ class App extends Component {
     drawings: [],
     showInfo: false,
     clickedDrawing: [],
-    createdDrawing: 0
+    types: []
   }
 
   componentDidMount(){
@@ -20,6 +20,14 @@ class App extends Component {
     .then(data=>{
       this.setState({
         drawings: data
+      })
+    })
+
+    fetch('http://localhost:3000/api/v1/types')
+    .then(response => response.json())
+    .then(data =>{
+      this.setState({
+        types: data
       })
     })
   }
@@ -97,7 +105,10 @@ class App extends Component {
             })
           }).then(response => response.json())
           .then(data => {
-            console.log(data);
+            let types = [...this.state.types, data]
+            this.setState({
+              types
+            })            
             
           })
         })
@@ -121,6 +132,7 @@ class App extends Component {
         {this.state.showInfo ? 
         <DrawingInfo 
         drawing={this.state.clickedDrawing} 
+        types={this.state.types}
         onClick={this.closeHandler}
         deleteOnClick={this.deleteHandler}
         editOnSubmit={this.editSubmitHandler} /> 
