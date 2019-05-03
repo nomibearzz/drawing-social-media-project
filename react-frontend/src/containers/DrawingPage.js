@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { SketchField, Tools } from 'react-sketch';
+import { withRouter } from "react-router-dom";
 import { SketchPicker } from 'react-color';
 import "../DrawingPage.css";
 
@@ -52,6 +53,7 @@ class DrawingPage extends Component {
 
     this.canvas.clear()
 
+    this.props.history.push('/')
   }
 
   changeHandler = (event) =>{
@@ -175,4 +177,4 @@ class DrawingPage extends Component {
   }
 }
 
-export default DrawingPage;
+export default withRouter(DrawingPage);
