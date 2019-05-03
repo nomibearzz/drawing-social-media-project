@@ -1,5 +1,5 @@
 class Api::V1::TypesController < ApplicationController
-  before_action :find_type, only: [:show]
+  before_action :find_type, only: [:show, :update]
 
   def index
     @types = Type.all
@@ -11,6 +11,11 @@ class Api::V1::TypesController < ApplicationController
 
   def create
     @type = Type.create(type_params)
+    render json: @type
+  end
+
+  def update
+    @type.update(type_params)
     render json: @type
   end
 
