@@ -65,6 +65,20 @@ class App extends Component {
     event.preventDefault();
     console.log(drawingInfo);
     console.log(drawing);
+
+    fetch(`http://localhost:3000/api/v1/drawings/${drawing.id}`, {
+      method: 'PATCH', 
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: drawingInfo.title,
+        description: drawingInfo.description,
+        artist: drawingInfo.artist
+      })
+    }) .then(response => response.json())
+    .then(data => console.log(data))
     
     
   }
