@@ -61,12 +61,11 @@ class App extends Component {
 
   }
 
-  editSubmitHandler = (event, drawing) => {
+  editSubmitHandler = (event, drawingInfo, drawing) => {
     event.preventDefault();
-    console.log(event);
+    console.log(drawingInfo);
     console.log(drawing);
     
-    console.log("this be the part where ye edit mate!");
     
   }
 

@@ -18,9 +18,11 @@ class DrawingInfo extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    console.log(event);
-    console.log('yeah! edits ftw!');
-    this.props.editOnSubmit(event, this.state)
+    this.props.editOnSubmit(event, this.state, this.props.drawing)
+    this.setState({
+      editform: !this.state.editform, 
+      [event.target.name]: event.target.value
+    })
 
   }
 
@@ -85,14 +87,14 @@ class DrawingInfo extends Component {
           </form>
           :
           <div>
-            <h3>{drawing.title}</h3>
-            <i>by {drawing.artist}</i>
+            <h3>{this.state.title}</h3>
+            <i>by {this.state.artist}</i>
             <br/>
 
             <img src={drawing.image} alt=""/>
 
             <p>Description</p>
-            <p>{drawing.description}</p>
+            <p>{this.state.description}</p>
 
             <p>Categories</p>
               <p>
