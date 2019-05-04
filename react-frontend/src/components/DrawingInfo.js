@@ -7,7 +7,18 @@ class DrawingInfo extends Component {
     title: this.props.drawing.title,
     artist: this.props.drawing.artist, 
     description: this.props.drawing.description,
-    categories: this.props.types
+    categories: this.props.types,
+    categoryNames: []
+  }
+
+  componentDidMount(){
+    fetch('http://localhost:3000/api/v1/categories')
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        categoryNames: data
+      })
+    })
   }
 
   editToggleHandler = () => {
@@ -26,6 +37,14 @@ class DrawingInfo extends Component {
 
   }
 
+  checkboxHandler = (event, categoryObj) => {
+    console.log(event, categoryObj);
+
+    let selectedArray;
+
+    
+  }
+
   changeHandler = (event) => {
     this.setState({
       [event.target.name]: event.target.value
@@ -35,7 +54,6 @@ class DrawingInfo extends Component {
 
   render() {
     const {drawing, onClick, deleteOnClick, types} = this.props  
-    
     return (
       <div className="info-outer">
 
@@ -80,8 +98,22 @@ class DrawingInfo extends Component {
             <textarea rows="4" cols="43" name="description" value={this.state.description} onChange={(event) =>this.changeHandler(event)}/>
 
             <p>Categories</p> 
+            {
+              this.state.categoryNames.map(category => {
+                
+                return <p>
+                  <input className="edit-checkbox"
+                    type="checkbox"
+                    name="categories"
+                    value={category.name}
+                    
+                    
 
-        
+                  /> {category.name}
+                </p>
+              })
+            }
+            
           </form>
           :
           <div>
