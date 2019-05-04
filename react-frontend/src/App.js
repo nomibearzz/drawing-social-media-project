@@ -78,7 +78,22 @@ class App extends Component {
         artist: drawingInfo.artist
       })
     }) .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+      let newDrawings = [...this.state.drawings]
+
+      newDrawings = newDrawings.map(drawing => {
+        if(drawing.id === data.id){
+          return data
+        } else {
+          return drawing
+        }
+      })
+
+      this.setState({
+        drawings: newDrawings
+      })
+      
+    })
     
     
   }
