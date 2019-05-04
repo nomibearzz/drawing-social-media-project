@@ -6,11 +6,11 @@ class DrawingInfo extends Component {
     drawTypes: [],
     title: this.props.drawing.title,
     artist: this.props.drawing.artist, 
-    description: this.props.drawing.description
+    description: this.props.drawing.description,
+    categories: this.props.types
   }
 
   editToggleHandler = () => {
-    console.log('clicky!');
     this.setState({
       editform: !this.state.editform
     })
@@ -27,7 +27,6 @@ class DrawingInfo extends Component {
   }
 
   changeHandler = (event) => {
-    console.log(event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -36,8 +35,6 @@ class DrawingInfo extends Component {
 
   render() {
     const {drawing, onClick, deleteOnClick, types} = this.props  
-    console.log(this.state.editform);
-
     
     return (
       <div className="info-outer">
@@ -80,9 +77,10 @@ class DrawingInfo extends Component {
             <img src={drawing.image} alt=""/>
             <p>Description</p>
 
-            <textarea name="description" value={this.state.description} onChange={(event) =>this.changeHandler(event)}/>
+            <textarea rows="4" cols="43" name="description" value={this.state.description} onChange={(event) =>this.changeHandler(event)}/>
 
             <p>Categories</p> 
+
         
           </form>
           :
@@ -99,10 +97,11 @@ class DrawingInfo extends Component {
             <p>Categories</p>
               <p>
                 {
-                  types.map(type => {
-                    if (type.drawing_id === drawing.id){
-                      return `${type.category.name} `
-                    }
+                  this.state.categories.map(category=> {
+                      if(category.drawing_id === drawing.id){
+                        return `${category.category.name} `
+                      }
+                      
                   })
                 }
               </p>

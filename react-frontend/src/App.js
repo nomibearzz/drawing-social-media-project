@@ -63,8 +63,6 @@ class App extends Component {
 
   editSubmitHandler = (event, drawingInfo, drawing) => {
     event.preventDefault();
-    console.log(drawingInfo);
-    console.log(drawing);
 
     fetch(`http://localhost:3000/api/v1/drawings/${drawing.id}`, {
       method: 'PATCH', 

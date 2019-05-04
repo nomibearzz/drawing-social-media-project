@@ -132,7 +132,7 @@ class DrawingPage extends Component {
 
         <form className="create-info">
           <p>Title</p> 
-          <input 
+          <input className='inputs'
             type="text" 
             name="title" 
             value={this.state.title}
@@ -141,11 +141,12 @@ class DrawingPage extends Component {
           <p>Description</p> 
           <textarea 
             name="description"
+            rows="4"
             value={this.state.description}
             onChange={(event)=>this.changeHandler(event)}
             placeholder="Put Something"/><br/>
           <p>Artist</p> 
-          <input 
+          <input className='inputs'
             type="text" 
             name="artist" 
             value={this.state.artist}
@@ -165,7 +166,7 @@ class DrawingPage extends Component {
               </p>
             ) 
           }
-          <button onClick={(event)=>this.createHandler(event)}>Create!</button>
+          <button className="create-button" onClick={(event)=>this.createHandler(event)}>Create!</button>
         </form>
       
         
