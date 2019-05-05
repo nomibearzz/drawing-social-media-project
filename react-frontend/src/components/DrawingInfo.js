@@ -7,7 +7,7 @@ class DrawingInfo extends Component {
     title: this.props.drawing.title,
     artist: this.props.drawing.artist, 
     description: this.props.drawing.description,
-    categories: this.props.types,
+    categoryTypes: this.props.drawing.categories,
     categoryNames: []
   }
 
@@ -42,6 +42,15 @@ class DrawingInfo extends Component {
 
     let selectedArray;
 
+    if(this.state.categoryTypes.indexOf(categoryObj) > - 1){
+      selectedArray = this.state.categoryTypes.filter(category => category !== categoryObj)
+    } else {
+      selectedArray = [...this.state.categoryTypes, categoryObj]
+    }
+
+    this.setState({
+      [event.target.name]: selectedArray
+    })
     
   }
 
@@ -53,10 +62,12 @@ class DrawingInfo extends Component {
   }
 
   render() {
-    const {drawing, onClick, deleteOnClick, types} = this.props  
+    console.log(this.props);
+     
+    const {drawing, onClick, deleteOnClick} = this.props    
+
     return (
       <div className="info-outer">
-
       <div className="info-card">
 
         <div id="buttons">
@@ -100,17 +111,18 @@ class DrawingInfo extends Component {
             <p>Categories</p> 
             {
               this.state.categoryNames.map(category => {
+                console.log(this.state.categoryTypes);
                 
                 return <p>
                   <input className="edit-checkbox"
-                    type="checkbox"
-                    name="categories"
-                    value={category.name}
-                    
-                    
-
+                  type="checkbox"
+                  name="categoryTypes"
+                  onChange={(event)=> this.checkboxHandler(event,category)}
+                  checked={this.state.categoryTypes.indexOf(category) > - 1 }
+                  value={category.name}
                   /> {category.name}
                 </p>
+                
               })
             }
             
@@ -129,11 +141,8 @@ class DrawingInfo extends Component {
             <p>Categories</p>
               <p>
                 {
-                  this.state.categories.map(category=> {
-                      if(category.drawing_id === drawing.id){
-                        return `${category.category.name} `
-                      }
-                      
+                  this.state.categoryTypes.map(categoryType => {
+                    return `${categoryType.name} `
                   })
                 }
               </p>

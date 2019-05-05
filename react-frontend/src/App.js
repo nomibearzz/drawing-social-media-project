@@ -11,7 +11,8 @@ class App extends Component {
     drawings: [],
     showInfo: false,
     clickedDrawing: [],
-    types: []
+    types: [],
+    drawArr: [] 
   }
 
   componentDidMount(){
@@ -144,14 +145,14 @@ class App extends Component {
     
   }
 
+ 
+
   render() {
-    
     let drawings = this.state.drawings.map(drawing => 
       <DrawingContainer className="container" key={drawing.id} drawing={drawing} onClick={this.clickHandler} />
     )
-
     let drawPage = <DrawingPage onSubmit={this.submitHandler} />
-
+    
     return (
       <div className="App">
         <Nav />
