@@ -42,8 +42,8 @@ class DrawingInfo extends Component {
 
     let selectedArray;
 
-    if(this.state.categoryTypes.indexOf(categoryObj) > - 1){
-      selectedArray = this.state.categoryTypes.filter(category => category !== categoryObj)
+    if(this.state.categoryTypes.map(function(categoryType) {return categoryType.id;}).indexOf(categoryObj.id) > -1){
+      selectedArray = this.state.categoryTypes.filter(category => category.id !== categoryObj.id)
     } else {
       selectedArray = [...this.state.categoryTypes, categoryObj]
     }
@@ -62,7 +62,7 @@ class DrawingInfo extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.state.categoryTypes);
      
     const {drawing, onClick, deleteOnClick} = this.props    
 
@@ -111,14 +111,13 @@ class DrawingInfo extends Component {
             <p>Categories</p> 
             {
               this.state.categoryNames.map(category => {
-                console.log(this.state.categoryTypes);
                 
                 return <p>
                   <input className="edit-checkbox"
                   type="checkbox"
                   name="categoryTypes"
                   onChange={(event)=> this.checkboxHandler(event,category)}
-                  checked={this.state.categoryTypes.indexOf(category) > - 1 }
+                  checked={this.state.categoryTypes.map(function(categoryType) {return categoryType.id;}).indexOf(category.id) > -1 }
                   value={category.name}
                   /> {category.name}
                 </p>

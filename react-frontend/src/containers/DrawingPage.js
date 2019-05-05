@@ -79,6 +79,8 @@ class DrawingPage extends Component {
   }
 
   render() { 
+    console.log(this.state.pickedCategories);
+    
     
     return (
       <div className="drawing-page">
