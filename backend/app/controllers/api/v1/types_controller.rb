@@ -1,5 +1,5 @@
 class Api::V1::TypesController < ApplicationController
-  before_action :find_type, only: [:show, :update]
+  before_action :find_type, only: [:show, :update, :destroy]
 
   def index
     @types = Type.all
@@ -17,6 +17,12 @@ class Api::V1::TypesController < ApplicationController
   def update
     @type.update(type_params)
     render json: @type
+  end
+
+  def destroy
+    @types = Type.all
+    @type.destroy
+    render json: @types
   end
 
   private
