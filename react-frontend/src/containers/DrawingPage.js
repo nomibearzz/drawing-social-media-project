@@ -64,11 +64,12 @@ class DrawingPage extends Component {
   }
 
   checkboxHandler = (event, categoryObj) => {
+    // console.log(this.state.pickedCategories);
     
     let selectedArray;
 
-    if(this.state.pickedCategories.indexOf(categoryObj) > - 1){
-      selectedArray = this.state.pickedCategories.filter(category => category !== categoryObj)
+    if(this.state.pickedCategories.map(function(pickedCategory) {return pickedCategory.id}).indexOf(categoryObj.id) > - 1){
+      selectedArray = this.state.pickedCategories.filter(category => category.id !== categoryObj.id)
     } else {
       selectedArray = [...this.state.pickedCategories, categoryObj]
     }
@@ -156,17 +157,17 @@ class DrawingPage extends Component {
             placeholder="Your Name"/><br/>
           <p>Categories</p>
           {
-            this.state.categories.map(category => 
-              <p>
+            this.state.categories.map(category => {
+              return <p>
                 <input className="category-boxes"
                 type="checkbox"
                 name="pickedCategories"
                 onChange={(event)=> this.checkboxHandler(event, category)}
-                checked={this.state.pickedCategories.indexOf(category) > -1 }
+                checked={this.state.pickedCategories.map(function(pickedCategory) {return pickedCategory.id}).indexOf(category.id) > - 1 }
                 value={category.name}
                 /> {category.name} 
               </p>
-            ) 
+            }) 
           }
           <button className="create-button" onClick={(event)=>this.createHandler(event)}>Create!</button>
         </form>

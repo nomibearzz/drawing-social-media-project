@@ -110,11 +110,16 @@ class App extends Component {
         title: drawing.title,
         image: drawing.canvas, 
         description: drawing.description,
-        artist: drawing.artist
+        artist: drawing.artist,
+        categories: drawing.pickedCategories
       })
     })
     .then(response=>response.json())
     .then(data=> {
+        console.log(data);
+        console.log(drawing.pickedCategories);
+        
+        
         let newDrawings = [...this.state.drawings, data]
         this.setState({
           drawings: newDrawings
@@ -148,6 +153,7 @@ class App extends Component {
  
 
   render() {
+    
     let drawings = this.state.drawings.map(drawing => 
       <DrawingContainer className="container" key={drawing.id} drawing={drawing} onClick={this.clickHandler} />
     )

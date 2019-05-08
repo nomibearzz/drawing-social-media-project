@@ -8,6 +8,7 @@ class DrawingInfo extends Component {
     artist: this.props.drawing.artist, 
     description: this.props.drawing.description,
     categoryTypes: this.props.drawing.categories,
+    types: this.props.types,
     categoryNames: []
   }
 
@@ -67,7 +68,7 @@ class DrawingInfo extends Component {
     const {drawing, onClick, deleteOnClick} = this.props    
 
     return (
-      <div className="info-outer">
+    <div className="info-outer">
       <div className="info-card">
 
         <div id="buttons">
@@ -140,8 +141,11 @@ class DrawingInfo extends Component {
             <p>Categories</p>
               <p>
                 {
-                  this.state.categoryTypes.map(categoryType => {
-                    return `${categoryType.name} `
+                  this.state.types.map(type => {
+                    if(type.drawing_id === drawing.id){
+                      return `${type.category.name} `
+                    }
+                    
                   })
                 }
               </p>
