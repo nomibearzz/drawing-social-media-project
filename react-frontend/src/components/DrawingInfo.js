@@ -43,7 +43,7 @@ class DrawingInfo extends Component {
 
     let selectedArray;
 
-    if(this.state.categoryTypes.map(function(categoryType) {return categoryType.id;}).indexOf(categoryObj.id) > -1){
+    if(this.state.categoryTypes.map(function(categoryType) {return categoryType.id}).indexOf(categoryObj.id) > -1){
       selectedArray = this.state.categoryTypes.filter(category => category.id !== categoryObj.id)
     } else {
       selectedArray = [...this.state.categoryTypes, categoryObj]
@@ -147,6 +147,8 @@ class DrawingInfo extends Component {
                     }
                     
                   })
+
+                  
                 }
               </p>
 
