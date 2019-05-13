@@ -62,9 +62,12 @@ class App extends Component {
 
   }
 
-  editSubmitHandler = (event, drawingInfo, drawing) => {
+  editSubmitHandler = (event, drawingInfo, drawing, type) => {
     event.preventDefault();
-
+    console.log('the state', drawingInfo);
+    console.log('clicked drawing', drawing);
+    console.log('all the records in join', type);
+    
     fetch(`http://localhost:3000/api/v1/drawings/${drawing.id}`, {
       method: 'PATCH', 
       headers: {
@@ -93,6 +96,7 @@ class App extends Component {
       })
       
     })
+
     
     
   }
