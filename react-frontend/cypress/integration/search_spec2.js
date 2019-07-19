@@ -4,6 +4,9 @@ describe('Verify Search Functionality', function () {
 
     cy.get('[data-cy=searchbar]').click()
       .type('asdf')
+
+    //should get the message containing how many results are there 
+    cy.get('[data-cy=count-message]').should('have.value', '0')
       
     cy.get('[data-cy=message]')
 
