@@ -5,7 +5,7 @@ describe('Verify Search Functionality', function () {
     cy.get('[data-cy=searchbar]').click()
       .type('asdf')
       
-    cy.get('.drawing')
+    cy.get('[data-cy=message]')
 
   })
 
