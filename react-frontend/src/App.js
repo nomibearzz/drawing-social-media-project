@@ -64,7 +64,7 @@ class App extends Component {
 
   editSubmitHandler = (event, drawingInfo, drawing, type) => {
     event.preventDefault();
-    console.log('the state', drawingInfo);
+    console.log(drawingInfo.categoryTypes.map(function (item){return item.id}));
     console.log('clicked drawing', drawing);
     console.log('all the records in join', type);
     
@@ -96,6 +96,19 @@ class App extends Component {
       })
       
     })
+
+    type.map(item => {
+      if(type.category_id === drawingInfo.categoryTypes.id){
+        console.log(true);
+        
+      }else {
+        console.log(false);
+        
+      }
+    })
+        
+    
+    
 
     
     

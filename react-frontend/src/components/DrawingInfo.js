@@ -30,7 +30,7 @@ class DrawingInfo extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.editOnSubmit(event, this.state, this.props.drawing, this.props.types)
+    this.props.editOnSubmit(event, this.state, this.props.drawing, this.props.drawing.categories)
     this.setState({
       editform: !this.state.editform, 
       [event.target.name]: event.target.value
