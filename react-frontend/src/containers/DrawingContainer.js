@@ -7,7 +7,7 @@ class DrawingContainer extends Component {
     const {drawing, onClick}= this.props;
 
     return (
-      <div>
+      <div data-cy="drawing-container">
         <DrawingCard key={drawing.id} drawing={drawing} onClick={onClick} />
       </div>
     );

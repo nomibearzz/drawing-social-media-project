@@ -9,7 +9,8 @@ const Searchbar = (props) => {
       <input type="text"
         placeholder="Search a Drawing"
         value={searchQuery}
-        onChange={(event) => onChange(event)} />
+        onChange={(event) => onChange(event)} 
+        data-cy="searchbar" />
     </div>
   );
   
