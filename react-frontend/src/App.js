@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch, withRouter,Link } from "react-router-dom";
 import './App.css';
 import DrawingPage from './containers/DrawingPage.js';
 import DrawingContainer from "./containers/DrawingContainer";
 import DrawingInfo from "./components/DrawingInfo";
+import Searchbar from "./components/Searchbar";
 import Nav from "./components/Nav.js";
 
 class App extends Component {
@@ -12,7 +13,9 @@ class App extends Component {
     showInfo: false,
     clickedDrawing: [],
     types: [],
-    drawArr: [] 
+    drawArr: [],
+    searchQuery: "",
+    searchDrawing: [],
   }
 
   componentDidMount(){
@@ -20,7 +23,8 @@ class App extends Component {
     .then(response=> response.json())
     .then(data=>{
       this.setState({
-        drawings: data
+        drawings: data,
+        searchDrawing: data
       })
     })
 
@@ -31,6 +35,22 @@ class App extends Component {
         types: data
       })
     })
+  }
+
+  changeHandler = (event) => {
+    console.log(event.target.value);
+      
+    let filteredDrawing = [...this.state.drawings]
+
+    filteredDrawing = filteredDrawing.filter(drawing => drawing.title.toLowerCase().includes(event.target.value.toLowerCase())
+    )
+
+    this.setState({
+      searchDrawing: filteredDrawing,
+      searchQuery: event.target.value
+
+    })
+
   }
 
   clickHandler = (drawing) => {
@@ -171,14 +191,29 @@ class App extends Component {
 
   render() {
     
-    let drawings = this.state.drawings.map(drawing => 
+    let drawings = this.state.searchDrawing.map(drawing => 
       <DrawingContainer className="container" key={drawing.id} drawing={drawing} onClick={this.clickHandler} />
     )
     let drawPage = <DrawingPage onSubmit={this.submitHandler} />
     
     return (
       <div className="App">
-        <Nav />
+
+        <div className = "nav-bar">
+          <Searchbar 
+            searchQuery={this.state.searchQuery}
+            onChange={this.changeHandler}
+          />
+
+          <Link to="/drawingpage" style={{textDecoration:'none'}}>
+            Doodle!
+          </Link>
+
+          <Link to = "/" style={{textDecoration:'none'}}>
+            View All Drawings 
+          </Link>
+        </div>
+        
   
         {this.state.showInfo ? 
         <DrawingInfo 
