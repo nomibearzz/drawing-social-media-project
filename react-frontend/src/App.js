@@ -42,7 +42,7 @@ class App extends Component {
       
     let filteredDrawing = [...this.state.drawings]
 
-    filteredDrawing = filteredDrawing.filter(drawing => drawing.title.toLowerCase().includes(event.target.value.toLowerCase())
+    filteredDrawing = filteredDrawing.filter(drawing => (drawing.title.toLowerCase().includes(event.target.value.toLowerCase()))
     )
 
     this.setState({
